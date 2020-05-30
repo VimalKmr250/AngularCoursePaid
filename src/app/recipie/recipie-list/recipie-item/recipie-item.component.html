@@ -1,1 +1,12 @@
-<p>recipie-item works!</p>
+<a href="#"  (click)="onSelectedItem()"  class="list-group-item clearfix" >
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{reicpeRecieved.name}}</h4>
+    <p class="list-group-item-text">{{reicpeRecieved.description}}</p>
+  </div>
+  <span class="pull-right">
+        <img [src]="reicpeRecieved.imagePath"
+             alt="{{reicpeRecieved.name}}"
+             class="img-responsive"
+             style="max-height: 50px;">
+      </span>
+</a>

@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-xs-12">
     <div class="btn btn-success">New Recipe</div>
@@ -6,19 +7,9 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
-
-    <a href="#" class="list-group-item clearfix" *ngFor="let reicpieItem of reicpe">
-      <div class="pull-left">
-        <h4 class="list-group-item-heading">{{reicpieItem.name}}</h4>
-        <p class="list-group-item-text">{{reicpieItem.description}}</p>
-      </div>
-      <span class="pull-right">
-        <img [src]="reicpieItem.imagePath"
-             alt="{{reicpieItem.name}}"
-             class="img-responsive"
-             style="max-height: 50px;">
-      </span>
-    </a>
-    <app-recipie-item></app-recipie-item>
+    <app-recipie-item
+      *ngFor="let reicpieItem of reicpes"
+      [reicpeRecieved]="reicpieItem"
+     (recipeSelected)="onRecipeSelected(reicpieItem)"></app-recipie-item>
   </div>
 </div>

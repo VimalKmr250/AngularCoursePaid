@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {RecipieModel} from '../recipie.model';
+import {RecipeService} from "../recipie.service";
 
 @Component({
   selector: 'app-recipie-list',
@@ -7,13 +8,16 @@ import {RecipieModel} from '../recipie.model';
   styleUrls: ['./recipie-list.component.css']
 })
 export class RecipieListComponent implements OnInit {
-  reicpe: RecipieModel[] = [
-    new RecipieModel('briyani', 'anjapar', 'https://www.indianhealthyrecipes.com/wp-content/uploads/2019/02/hyderabadi-biryani-recipe-500x500.jpg')
-  ];
+  @Output() recipeWasSelected = new EventEmitter<RecipieModel>();
+  reicpes: RecipieModel[] = [];
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private recipeService: RecipeService) {
   }
 
+  ngOnInit() {
+    this.reicpes = this.recipeService.getRecipe();
+  }
+  onRecipeSelected(recipe: RecipieModel){
+    this.recipeWasSelected.emit(recipe);
+  }
 }
